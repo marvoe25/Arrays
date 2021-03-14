@@ -1,4 +1,4 @@
-public abstract class Client implements Comparable<Client> {
+public abstract class Client extends ArrayUtils implements Comparable<Client> {
 
     String fio;
     int age;
@@ -37,5 +37,7 @@ public abstract class Client implements Comparable<Client> {
 
     public abstract void printResult();
  //   public abstract void printResult(Client[] c);
+
+    public void printResult(Client[] c) {};
 
 }

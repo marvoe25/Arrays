@@ -1,13 +1,23 @@
-import java.util.Arrays;
-import static java.lang.System.*;
+import static java.lang.System.lineSeparator;
+import static java.lang.System.out;
 
 public class PhysicalPerson extends Client {
 
-    public enum Gender {MALE, FEMALE}
+
+
+    enum Gender {MALE, FEMALE}
     Gender gender;
 
-    PhysicalPerson(String fio, int age, Gender gender) {
+    public PhysicalPerson(String fio, int age, Gender gender) {
         super(fio, age);
+        this.gender = gender;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -28,6 +38,32 @@ public class PhysicalPerson extends Client {
         return lineSeparator() + "FIO: " + super.fio + ", Age: " + super.age + ",  Gender:" + gender;
     }
 
+
+    @Override
+    public Client[] filterArrayByGender(Client[] clients, boolean isWoman) {
+        Gender g = isWoman ? PhysicalPerson.Gender.FEMALE : Gender.MALE;
+      //  out.println(g.toString());
+        Client[] newArr = new Client[clients.length];
+        int j=0;
+        for (int i = 0; i < clients.length; i++) {
+            // как вытащить значение гендера из клиента
+            if (this.gender == g ) {
+                newArr[j] = clients[i];
+                j++;
+            }
+            //continue;
+        }
+        Client[] resultArr = new Client[j];
+        System.arraycopy(newArr,0,resultArr,0,j);
+        return resultArr;
+    }
+
+    /**
+     * old realisations
+     * doesn't use
+     * @param c
+     * @return
+     */
     @Override
     public int sortByParameter(Client c) {
         return 0;
@@ -37,22 +73,23 @@ public class PhysicalPerson extends Client {
     public void deleteDuplicate(Client c) {
     }
 
-  @Override
-    public void printResult() {
-        out.println(this.toString());
-    }
+    @Override
+       public void printResult() {
+           out.println(this.toString());
+       }
 
     //public void printResult(Client[] c) {
     //    for (int i = 0; i < c.length; i++) {
-    //            System.out.println(c[i].toString());
-    //        }
-        //out.println(this.toString());
+    //        System.out.println(c[i].toString());
+    //    }
 
-    //public void printResult(PhysicalPerson[] array) {
-    //    System.out.println(Arrays.toString(array));
-    //}
 
-}
+        //public void printResult(PhysicalPerson[] array) {
+        //    System.out.println(Arrays.toString(array));
+        //}
+
+    }
+//}
 
 
 

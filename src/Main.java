@@ -1,12 +1,11 @@
 import java.util.Arrays;
 
 
-public class Clients {
+public class Main {
     public static void main(String[] args) {
 
-        //PhysicalPerson pp = new PhysicalPerson("dfsdf", 12, PhysicalPerson.Gender.MALE);
-        PhysicalPerson[] ppArr = {
-                new PhysicalPerson("Test Ian Bill", 12, PhysicalPerson.Gender.MALE),
+        Client[] ppArr = {
+                new PhysicalPerson("Test Ian Bill", 12, PhysicalPerson.Gender.MALE ),
                 new PhysicalPerson("Te Anna Ivanovna", 25, PhysicalPerson.Gender.FEMALE),
                 new PhysicalPerson("Brig Inna Kimovna", 35, PhysicalPerson.Gender.FEMALE),
                 new PhysicalPerson("Shtab Stepanida Petrovna", 27, PhysicalPerson.Gender.FEMALE),
@@ -26,8 +25,12 @@ public class Clients {
 
         System.out.println(System.lineSeparator() + "Первоначальный массив клиентов:");
         System.out.println(Arrays.toString(ppArr));
-        Arrays.sort(ppArr);
+        // Как вызвать метод printArray из ArrayUtils?
+        //ArrayUtils.
+        //ppArr.
+        //printArray
         System.out.println(System.lineSeparator() + "Отсортированный по возрасту массив клиентов:");
+        Arrays.sort(ppArr);
         System.out.println(Arrays.toString(ppArr));
         System.out.println(System.lineSeparator() + "Массив после удаления дубликатов:");
         /*Client [] newArr = new Client[ppArr.length + 1];
@@ -44,15 +47,21 @@ public class Clients {
 
 
         System.out.println(System.lineSeparator() + "Массив клиентов женского пола:");
-        for (int i = 0; i < ppArr.length; i++) {
-            if (ppArr[i].gender == PhysicalPerson.Gender.FEMALE) {
+       /* for (int i = 0; i < ppArr.length; i++) {
+            if (ppArr[i].getGender() == PhysicalPerson.Gender.FEMALE) {
                 System.out.print(ppArr[i]);
             }
         }
+*/
+        // Почему так получается вызвать?
+        ppArr[0].filterArrayByGender(ppArr, true);
+        ppArr[0].printArray(ppArr);
+
 
         System.out.println(System.lineSeparator() + "Проверка метода печати");
         ppArr[0].printResult();
         //ppArr.printResult();
+        //printResult(ppArr);
         //не понимаю, почему не получается вызвать метод для массива
         //вернее, как его реализовать, чтобы он вызвался
 
