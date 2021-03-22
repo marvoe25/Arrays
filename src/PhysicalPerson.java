@@ -1,11 +1,9 @@
 import static java.lang.System.lineSeparator;
-import static java.lang.System.out;
 
 public class PhysicalPerson extends Client {
 
-
-
     enum Gender {MALE, FEMALE}
+
     Gender gender;
 
     public PhysicalPerson(String fio, int age, Gender gender) {
@@ -38,65 +36,28 @@ public class PhysicalPerson extends Client {
         return lineSeparator() + "FIO: " + super.fio + ", Age: " + super.age + ",  Gender:" + gender;
     }
 
-
-    @Override
-    public Client[] filterArrayByGender(Client[] clients, boolean isWoman) {
+    public static PhysicalPerson[] filterArrayByGender(PhysicalPerson[] pp, boolean isWoman) {
+        //System.out.println("Это недоделанный метод filterArrayByGender из ArrayUtils");
         Gender g = isWoman ? PhysicalPerson.Gender.FEMALE : Gender.MALE;
-      //  out.println(g.toString());
-        Client[] newArr = new Client[clients.length];
+        PhysicalPerson[] newArr = new PhysicalPerson[pp.length];
         int j=0;
-        for (int i = 0; i < clients.length; i++) {
-            // как вытащить значение гендера из клиента
-            if (this.gender == g ) {
-                newArr[j] = clients[i];
-                j++;
-            }
-            //continue;
+        for (int i = 0; i < pp.length; i++) {
+            if (pp[i].getGender() == g) {
+                newArr[j] = pp[i];//
+                j++;//
+                // System.out.print(clients[i]);
+            }}
+        PhysicalPerson[] resultArr = new PhysicalPerson[j];//
+        System.arraycopy(newArr,0,resultArr,0,j);//
+        return resultArr;//
+          //  return clients;
         }
-        Client[] resultArr = new Client[j];
-        System.arraycopy(newArr,0,resultArr,0,j);
-        return resultArr;
+
+
     }
 
-    /**
-     * old realisations
-     * doesn't use
-     * @param c
-     * @return
-     */
-    @Override
-    public int sortByParameter(Client c) {
-        return 0;
-    }
-
-    @Override
-    public void deleteDuplicate(Client c) {
-    }
-
-    @Override
-       public void printResult() {
-           out.println(this.toString());
-       }
-
-    //public void printResult(Client[] c) {
-    //    for (int i = 0; i < c.length; i++) {
-    //        System.out.println(c[i].toString());
-    //    }
 
 
-        //public void printResult(PhysicalPerson[] array) {
-        //    System.out.println(Arrays.toString(array));
-        //}
-
-    }
-//}
-
-
-
-  /*  @Override
-    public Client[] deleteDuplicate(Client c) {
-        return new Client[0];
-    }*/
 
  /*     public static PhysicalPerson[] getNewArr(PhysicalPerson[] oldArr) {
         PhysicalPerson[] newArr = new PhysicalPerson[oldArr.length + 1];
